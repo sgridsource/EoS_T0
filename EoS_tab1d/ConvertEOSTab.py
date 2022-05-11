@@ -139,7 +139,7 @@ if __name__ == '__main__':
         data = read_lorene_eosfile(f)
         convdata = convert_lorene2sgrid(data)
         name = f.rsplit( ".", 1 )[ 0 ]+".txt"
-        with open(name, 'wb') as fh:
+        with open(name, 'w') as fh:
             fh.write('# ')
             fh.write(f)
             fh.write(' converted to units with G=c=Msun=1\n')
