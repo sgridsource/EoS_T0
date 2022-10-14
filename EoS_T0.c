@@ -28,6 +28,12 @@ double h_of_rho0_epsl_P(double rho0, double epsl, double P)
   return hm1_of_rho0_epsl_P(rho0, epsl, P) + 1.;
 }
 
+/* return epsl = rhoE/rho0 - 1,  since: rhoE = rho0 * (1 + epsl) */
+double epsl_of_rho0_rhoE(double rho0, double rhoE)
+{
+  if(rho0==0.) return 0.;
+  else         return rhoE/rho0 - 1.;
+}
 
 /**************************************************************************/
 /* wrappers for some funcs in tab1d_Of_rho0_AtT0.c */
@@ -115,3 +121,14 @@ int EoS_T0_finalize(tGrid *grid)
   return 0;
 }
 
+
+/**************************************************************************/
+/* simple interface funcs ro access EoS structure */
+/**************************************************************************/
+void EoS_T0_rho0_P_rhoE_from_hm1(double hm1,
+                                 double *rho0, double *P, double *rhoE)
+{
+  double drho0dhm1[1]; /* not used outside this func */
+
+  EoS_T0->vars_from_hm1(hm1, rho0, P, rhoE, drho0dhm1);
+}
