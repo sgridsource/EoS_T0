@@ -8,3 +8,7 @@ Supported are:
 
 * Tabulated cold 1d EoS (choose: EoS_type = tab1d_AtT0).
   See also [EoS_tab1d/Note.txt](EoS_tab1d/Note.txt)
+
+* The script [EoS_tab1d/ConvertEOSTab.py](EoS_tab1d/ConvertEOSTab.py)
+  can convert an EoS file from Lorene format to Sgrid's format used in
+  this module.
